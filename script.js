@@ -31,6 +31,19 @@ function operate(operator, a, b) {
   }
 }
 
+function populateDisplay(e) {
+  if (screenValue.textContent === "0") {
+    screenValue.textContent = e.target.textContent;
+  } else {
+    screenValue.textContent += e.target.textContent;
+  }
+}
+
 let firstNumber;
 let secondNumber;
 let operator;
+
+const screenValue = document.querySelector("#screen");
+
+const numbers = document.querySelectorAll(".number");
+numbers.forEach(number => number.addEventListener("click", populateDisplay));
