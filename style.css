@@ -56,4 +56,6 @@ button {
 #zero {
   width: 195px;
   border-radius: 80px;
+  text-align: left;
+  padding-left: 25px;
 }
