@@ -22,10 +22,10 @@ function operate(operator, a, b) {
     case "-":
       subtract(a, b);
       break;
-    case "*":
+    case "x":
       multiply(a, b);
       break;
-    case "/":
+    case "÷":
       divide(a, b);
       break;
   }
@@ -39,11 +39,22 @@ function populateDisplay(e) {
   }
 }
 
+function drawOperator(e) { 
+  operatorSelected = true;
+  firstNumber = screenValue.textContent;
+  operator = e.target.textContent;
+  screenValue.textContent += ` ${operator} `;
+}
+
 let firstNumber;
 let secondNumber;
 let operator;
+let operatorSelected = false;
 
 const screenValue = document.querySelector("#screen");
 
 const numbers = document.querySelectorAll(".number");
 numbers.forEach(number => number.addEventListener("click", populateDisplay));
+
+const operators = document.querySelectorAll(".operator");
+operators.forEach(operator => operator.addEventListener("click", drawOperator));
