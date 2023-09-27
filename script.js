@@ -15,37 +15,49 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
+  let result;
   switch (operator) {
     case "+":
-      add(a, b);
+      result = add(a, b);
       break;
     case "-":
-      subtract(a, b);
+      result = subtract(a, b);
       break;
     case "x":
-      multiply(a, b);
+      result = multiply(a, b);
       break;
     case "÷":
-      divide(a, b);
+      result = divide(a, b);
       break;
   }
+  return result;
 }
 
-function populateDisplay(e) {
+function displayNumbers(e) {
   if (screenValue.textContent === "0") {
     screenValue.textContent = e.target.textContent;
   } else {
     screenValue.textContent += e.target.textContent;
+    if (operatorSelected) {
+      secondNumber = +screenValue.textContent
+                                .replace(`${firstNumber} ${operator} `, "");
+    }
   }
 }
 
-function drawOperator(e) { 
+function displayOperator(e) { 
   operatorSelected = true;
-  firstNumber = screenValue.textContent;
+  firstNumber = +screenValue.textContent;
   operator = e.target.textContent;
   screenValue.textContent += ` ${operator} `;
 }
 
+function displayResult(e) {
+  result = operate(operator, firstNumber, secondNumber);
+  screenValue.textContent = result;
+}
+
+let result;
 let firstNumber;
 let secondNumber;
 let operator;
@@ -54,7 +66,10 @@ let operatorSelected = false;
 const screenValue = document.querySelector("#screen");
 
 const numbers = document.querySelectorAll(".number");
-numbers.forEach(number => number.addEventListener("click", populateDisplay));
+numbers.forEach(number => number.addEventListener("click", displayNumbers));
 
 const operators = document.querySelectorAll(".operator");
-operators.forEach(operator => operator.addEventListener("click", drawOperator));
+operators.forEach(operator => operator.addEventListener("click", displayOperator));
+
+const equal = document.querySelector(".equal");
+equal.addEventListener("click", displayResult);
