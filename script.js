@@ -47,9 +47,15 @@ function displayNumbers(e) {
 
 function displayOperator(e) { 
   operatorSelected = true;
-  firstNumber = +screenValue.textContent;
-  operator = e.target.textContent;
-  screenValue.textContent += ` ${operator} `;
+  if (secondNumber != null) {
+    firstNumber = operate(operator, firstNumber, secondNumber);
+    operator = e.target.textContent;
+    screenValue.textContent = `${firstNumber} ${operator} `;
+  } else {
+    firstNumber = +screenValue.textContent;
+    operator = e.target.textContent;
+    screenValue.textContent += ` ${operator} `;
+  } 
 }
 
 function displayResult(e) {
@@ -57,10 +63,19 @@ function displayResult(e) {
   screenValue.textContent = result;
 }
 
-let result;
-let firstNumber;
-let secondNumber;
-let operator;
+function clearDisplay() {
+  result = null;
+  firstNumber = null;
+  secondNumber = null;
+  operator = null;
+  operatorSelected = false;
+  screenValue.textContent = "0";
+}
+
+let result = null;
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
 let operatorSelected = false;
 
 const screenValue = document.querySelector("#screen");
@@ -73,3 +88,6 @@ operators.forEach(operator => operator.addEventListener("click", displayOperator
 
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", displayResult);
+
+const clear = document.querySelector("#clear");
+clear.addEventListener("click", clearDisplay);
