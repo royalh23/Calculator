@@ -48,6 +48,10 @@ button {
   border-radius: 50%;
 }
 
+button:active {
+  transform: translateY(4px);
+}
+
 #clear {
   width: 297.5px;
   border-radius: 80px;
@@ -58,8 +62,4 @@ button {
   border-radius: 80px;
   text-align: left;
   padding-left: 25px;
-}
-
-button:active {
-  transform: translateY(4px);
 }
