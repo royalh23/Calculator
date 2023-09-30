@@ -42,6 +42,9 @@ function roundDown(number, decimals) {
 }
 
 function displayNumbers(e) {
+  if (resultShown) {
+    clearDisplay();
+  }
   if (screenValue.textContent === "0") {
     screenValue.textContent = e.target.textContent;
   } else {
@@ -68,6 +71,7 @@ function displayOperator(e) {
 }
 
 function displayResult(e) {
+  resultShown = true;
   if (secondNumber == 0) {
     screenValue.textContent = "Bruh...";
   } else {  
@@ -83,6 +87,7 @@ function clearDisplay() {
   secondNumber = null;
   operator = null;
   operatorSelected = false;
+  resultShown = false;
   screenValue.textContent = "0";
 }
 
@@ -91,6 +96,7 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 let operatorSelected = false;
+let resultShown = false;
 
 const screenValue = document.querySelector("#screen");
 
