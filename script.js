@@ -33,6 +33,14 @@ function operate(operator, a, b) {
   return result;
 }
 
+function roundDown(number, decimals) {
+  if (!Number.isInteger(number)) {
+    return +number.toFixed(decimals);
+  } else {
+    return number;
+  }
+}
+
 function displayNumbers(e) {
   if (screenValue.textContent === "0") {
     screenValue.textContent = e.target.textContent;
@@ -49,7 +57,7 @@ function displayOperator(e) {
   operatorSelected = true;
   if (secondNumber != null) {
     firstNumber = operate(operator, firstNumber, secondNumber);
-    if (!Number.isInteger(firstNumber)) firstNumber = +firstNumber.toFixed(6);
+    firstNumber = roundDown(firstNumber, 6);
     operator = e.target.textContent;
     screenValue.textContent = `${firstNumber} ${operator} `;
   } else {
@@ -61,7 +69,7 @@ function displayOperator(e) {
 
 function displayResult(e) {
   result = operate(operator, firstNumber, secondNumber);
-  if (!Number.isInteger(result)) result = +result.toFixed(6);
+  result = roundDown(result, 6);
   screenValue.textContent = result;
 }
 
