@@ -11,6 +11,7 @@ body {
 }
 
 #calculator {
+  background-color: #1C1C1C;
   border: 3px solid black;
   border-radius: 30px;
   width: 440px;
@@ -23,6 +24,7 @@ body {
 }
 
 #screen {
+  background-color: #fff;
   display: flex;
   justify-content: end;
   align-items: flex-end;
@@ -47,6 +49,7 @@ button {
   height: 18%;
   border-radius: 50%;
   border: 1px;
+  color: #fff;
 }
 
 button:active {
@@ -70,5 +73,10 @@ button:active {
 }
 
 .number {
+  background-color: #505050;
+}
+
+#clear {
+  color: #1C1C1C;
   background-color: #D4D4D2;
 }
