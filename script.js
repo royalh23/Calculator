@@ -60,6 +60,7 @@ function displayOperator(e) {
 
 function displayResult(e) {
   result = operate(operator, firstNumber, secondNumber);
+  if (!Number.isInteger(result)) result = result.toFixed(7);
   screenValue.textContent = result;
 }
 
