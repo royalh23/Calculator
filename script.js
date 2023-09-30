@@ -68,9 +68,13 @@ function displayOperator(e) {
 }
 
 function displayResult(e) {
-  result = operate(operator, firstNumber, secondNumber);
-  result = roundDown(result, 6);
-  screenValue.textContent = result;
+  if (secondNumber == 0) {
+    screenValue.textContent = "Bruh...";
+  } else {  
+    result = operate(operator, firstNumber, secondNumber);
+    result = roundDown(result, 6);
+    screenValue.textContent = result;
+  }
 }
 
 function clearDisplay() {
