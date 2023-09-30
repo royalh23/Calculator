@@ -111,3 +111,5 @@ equal.addEventListener("click", displayResult);
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", clearDisplay);
+
+const point = document.querySelector("#point");
