@@ -57,6 +57,7 @@ function displayNumbers(e) {
 }
 
 function displayOperator(e) { 
+  resultShown = false;
   operatorSelected = true;
   if (secondNumber != null) {
     firstNumber = operate(operator, firstNumber, secondNumber);
