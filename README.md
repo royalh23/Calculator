@@ -4,6 +4,7 @@ as:
 - FlexBox model in CSS;
 - Utilizing functions in JS;
 - Event handling in DOM;
+
 have been demonstrated in this project.
 
 You can try this calculator here: https://royalh23.github.io/calculator/
