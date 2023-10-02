@@ -48,6 +48,8 @@ function displayNumbers(e) {
   if (screenValue.textContent === "0") {
     screenValue.textContent = e.target.textContent;
   } else {
+    // Disable click event on decimal point after one point
+    if (e.target.textContent === ".") point.removeEventListener("click", displayNumbers);
     screenValue.textContent += e.target.textContent;
     if (operatorSelected) {
       secondNumber = +screenValue.textContent
@@ -57,7 +59,15 @@ function displayNumbers(e) {
 }
 
 function displayOperator(e) { 
+  // Add event listener to decimal point for the second number
+  point.addEventListener("click", displayNumbers);
+
+  // Set resultShown to false so users can input second number without having
+  // the display cleared
   resultShown = false;
+
+  // Set operatorSelected to true so that the second number after the operator
+  // can be saved in a variable
   operatorSelected = true;
   if (secondNumber != null) {
     firstNumber = operate(operator, firstNumber, secondNumber);
@@ -90,6 +100,7 @@ function clearDisplay() {
   operatorSelected = false;
   resultShown = false;
   screenValue.textContent = "0";
+  point.addEventListener("click", displayNumbers);
 }
 
 let result = null;
@@ -97,6 +108,7 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 let operatorSelected = false;
+// Set a flag for starting afresh after equal key has been pressed
 let resultShown = false;
 
 const screenValue = document.querySelector("#screen");
